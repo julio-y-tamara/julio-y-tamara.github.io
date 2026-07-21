@@ -57,12 +57,17 @@ btnAbrir.addEventListener('click', () => {
 });
 
 // ─────────── Personalización por URL ───────────
-// Ejemplo: index.html?invitado=Familia%20Pérez&pases=4
+// Ejemplo: index.html?nombre=María&apellido=Pérez&pases=4
 const params = new URLSearchParams(window.location.search);
-const invitado = params.get('invitado');
+const nombre = params.get('nombre');
+const apellido = params.get('apellido');
 const pases = params.get('pases');
 
-if (invitado) document.getElementById('nombreInvitado').textContent = invitado;
+// Nombre completo a partir de nombre + apellido (soporta también ?invitado=)
+const nombreCompleto = [nombre, apellido].filter(Boolean).join(' ').trim()
+    || (params.get('invitado') || '').trim();
+
+if (nombreCompleto) document.getElementById('nombreInvitado').textContent = nombreCompleto;
 if (pases) document.getElementById('numeroPases').textContent = pases;
 
 // ─────────── Cuenta regresiva ───────────
@@ -128,8 +133,8 @@ if (contenedorPetalos && !reducirMovimiento) {
 
 // ─────────── RSVP por WhatsApp ───────────
 const btnWhatsApp = document.getElementById('btnWhatsApp');
-const nombreParaMensaje = invitado || '';
-const mensaje = `¡Hola! Soy ${nombreParaMensaje || '________'} y confirmo mi asistencia a la boda de Julio y Tamara el sábado 29 de agosto de 2026. 🤍`;
+const pasesTexto = pases ? ` (${pases} pase${pases === '1' ? '' : 's'})` : '';
+const mensaje = `¡Hola! Soy ${nombreCompleto || '________'}${pasesTexto} y confirmo mi asistencia a la boda de Julio y Tamara el sábado 29 de agosto de 2026. 🤍`;
 btnWhatsApp.href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
 // ─────────── Lightbox de la galería ───────────
