@@ -145,24 +145,29 @@ img { max-width: 100%; display: block; }
 .sobre__contenido { text-align: center; padding: 2rem; }
 
 .sobre__monograma {
-    font-family: var(--fuente-serif);
-    font-size: clamp(3.5rem, 15vw, 5.5rem);
-    letter-spacing: 0.1em;
-    color: var(--tinta);
     border: 1px solid var(--dorado-claro);
     border-radius: 50%;
-    width: clamp(10rem, 42vw, 14rem);
-    height: clamp(10rem, 42vw, 14rem);
-    display: grid;
-    place-items: center;
+    width: clamp(12rem, 62vw, 16rem);
+    height: clamp(12rem, 62vw, 16rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
     margin: 0 auto 1.8rem;
     line-height: 1;
 }
 
-.sobre__monograma span {
+.sobre__nombre {
     font-family: var(--fuente-script);
+    font-size: clamp(2.4rem, 12vw, 3.4rem);
+    color: var(--tinta);
+}
+
+.sobre__amp {
+    font-family: var(--fuente-script);
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
     color: var(--dorado);
-    font-size: 0.55em;
 }
 
 .sobre__texto {
@@ -425,10 +430,45 @@ img { max-width: 100%; display: block; }
     font-size: 1.05rem;
 }
 
-.fecha__hora {
-    margin-top: 0.4rem;
-    font-family: var(--fuente-sans);
+.ceremonias {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.ceremonias__item {
+    background: #fff;
+    border: 1px solid var(--rosa);
+    border-radius: 1rem;
+    padding: 1.3rem 1.6rem;
+    min-width: 8.5rem;
+    box-shadow: 0 8px 20px rgba(201, 142, 134, 0.14);
+}
+
+.ceremonias__icono { color: var(--dorado); }
+
+.ceremonias__icono svg {
+    width: 2.6rem;
+    height: 2.6rem;
+    display: block;
+    margin: 0 auto 0.5rem;
+}
+
+.ceremonias__tipo {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.72rem;
     color: var(--tinta-suave);
+}
+
+.ceremonias__hora {
+    font-family: var(--fuente-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--rosa-oscuro);
+    line-height: 1.2;
 }
 
 .contador {
@@ -553,53 +593,83 @@ img { max-width: 100%; display: block; }
 
 /* ─────────── Cronograma ─────────── */
 
-.cronograma__lista {
+.crono {
     list-style: none;
-    max-width: 24rem;
-    margin: 0 auto;
+    max-width: 32rem;
+    margin: 2.5rem auto 0;
     position: relative;
-    text-align: left;
 }
 
-.cronograma__lista::before {
+/* Línea central vertical */
+.crono::before {
     content: '';
     position: absolute;
-    left: 5.2rem;
+    left: 50%;
     top: 0.5rem;
     bottom: 0.5rem;
     width: 1px;
-    background: var(--rosa);
+    background: var(--sage-oscuro);
+    opacity: 0.5;
+    transform: translateX(-50%);
 }
 
-.cronograma__item {
+.crono__item {
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 1.3rem 2.6rem;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
-    padding: 0.85rem 0;
+    gap: 0.15rem;
 }
 
-.cronograma__hora {
-    font-family: var(--fuente-serif);
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--rosa-oscuro);
-    width: 4rem;
-    text-align: right;
-    flex-shrink: 0;
-}
+.crono__item:nth-child(even) { margin-left: 50%; }
 
-.cronograma__punto {
+/* Nodo sobre la línea central */
+.crono__item::after {
+    content: '';
+    position: absolute;
+    top: 6px;
     width: 11px;
     height: 11px;
     border-radius: 50%;
     background: var(--dorado);
-    border: 2px solid #fff;
+    border: 2px solid var(--blush);
     box-shadow: 0 0 0 1px var(--dorado-claro);
-    flex-shrink: 0;
-    z-index: 1;
 }
 
-.cronograma__evento { font-size: 1.05rem; }
+.crono__item:nth-child(odd)::after  { right: -6px; }
+.crono__item:nth-child(even)::after { left: -6px; }
+
+.crono__icono {
+    color: var(--dorado);
+    margin-bottom: 0.4rem;
+}
+
+.crono__icono svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: block;
+}
+
+.crono__hora {
+    font-family: var(--fuente-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--rosa-oscuro);
+    letter-spacing: 0.03em;
+}
+
+.crono__evento {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--tinta-suave);
+    line-height: 1.4;
+    max-width: 12ch;
+}
 
 /* ─────────── Galería ─────────── */
 
@@ -658,6 +728,10 @@ img { max-width: 100%; display: block; }
     border-radius: 1.2rem;
     padding: 1.8rem 1.5rem;
     box-shadow: 0 10px 25px rgba(92, 79, 74, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .regalos__tarjeta h3 {
@@ -667,12 +741,53 @@ img { max-width: 100%; display: block; }
     margin-bottom: 0.3rem;
 }
 
-.regalos__cuenta {
-    font-family: var(--fuente-serif);
-    font-size: 1.5rem;
-    letter-spacing: 0.15em;
-    color: var(--sage-oscuro);
+.regalos__label {
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    color: var(--dorado);
+    margin-bottom: 1rem;
 }
+
+.regalos__nota {
+    font-size: 0.85rem;
+    color: var(--tinta-suave);
+    max-width: 22ch;
+}
+
+.regalos__icono {
+    color: var(--dorado);
+    margin-bottom: 0.6rem;
+}
+
+.regalos__icono svg { width: 2.6rem; height: 2.6rem; display: block; }
+
+/* Marco elegante del QR */
+.qr {
+    position: relative;
+    padding: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.qr img {
+    width: 12.5rem;
+    height: 12.5rem;
+    max-width: 100%;
+    display: block;
+    border-radius: 0.35rem;
+}
+
+.qr__c {
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 0 solid var(--dorado);
+}
+
+.qr__c--tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; border-top-left-radius: 4px; }
+.qr__c--tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; border-top-right-radius: 4px; }
+.qr__c--bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; border-bottom-left-radius: 4px; }
+.qr__c--br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; border-bottom-right-radius: 4px; }
 
 /* ─────────── Vestimenta ─────────── */
 

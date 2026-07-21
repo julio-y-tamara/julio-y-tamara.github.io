@@ -28,7 +28,11 @@
     <!-- ══════════ SOBRE DE BIENVENIDA ══════════ -->
     <div class="sobre" id="sobre">
         <div class="sobre__contenido">
-            <div class="sobre__monograma">J <span>&amp;</span> T</div>
+            <div class="sobre__monograma">
+                <span class="sobre__nombre">Julio</span>
+                <span class="sobre__amp">&amp;</span>
+                <span class="sobre__nombre">Tamara</span>
+            </div>
             <p class="sobre__texto">Tenemos algo especial que contarte…</p>
             <button class="btn btn--dorado" id="abrirInvitacion">Abrir invitación</button>
             <p class="sobre__nota">Con música · sube el volumen 🎵</p>
@@ -75,7 +79,33 @@
                     <p class="fecha__dia-semana">Sábado</p>
                     <p class="fecha__numero">29</p>
                     <p class="fecha__mes">Agosto 2026</p>
-                    <p class="fecha__hora">17:30 hrs.</p>
+                </div>
+                <div class="ceremonias reveal">
+                    <div class="ceremonias__item">
+                        <span class="ceremonias__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="19" cy="28" r="9"/>
+                                <circle cx="30" cy="22" r="9"/>
+                                <path d="M30 5l2.4 3-2.4 3-2.4-3z"/>
+                            </svg>
+                        </span>
+                        <p class="ceremonias__tipo">Civil</p>
+                        <p class="ceremonias__hora">17:00</p>
+                    </div>
+                    <div class="ceremonias__item">
+                        <span class="ceremonias__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="24" y1="4" x2="24" y2="10"/>
+                                <line x1="21" y1="6.5" x2="27" y2="6.5"/>
+                                <polyline points="16 19 24 11 32 19"/>
+                                <path d="M16 19V43H32V19"/>
+                                <path d="M20 43v-7a4 4 0 0 1 8 0v7"/>
+                                <circle cx="24" cy="25" r="1.6"/>
+                            </svg>
+                        </span>
+                        <p class="ceremonias__tipo">Bendición</p>
+                        <p class="ceremonias__hora">18:00</p>
+                    </div>
                 </div>
                 <div class="contador reveal" id="contador" aria-live="polite">
                     <div class="contador__item"><span id="cd-dias">--</span><small>días</small></div>
@@ -84,7 +114,7 @@
                     <div class="contador__item"><span id="cd-seg">--</span><small>seg</small></div>
                 </div>
                 <a class="btn btn--contorno reveal" id="btnCalendario" target="_blank" rel="noopener"
-                   href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Julio+%26+Tamara&dates=20260829T173000/20260830T040000&ctz=America/La_Paz&details=%C2%A1Te+esperamos+para+celebrar+nuestra+boda!&location=Propiedad+El+Rodeo">
+                   href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Julio+%26+Tamara&dates=20260829T170000/20260830T040000&ctz=America/La_Paz&details=%C2%A1Te+esperamos+para+celebrar+nuestra+boda!&location=Propiedad+El+Rodeo">
                     Agendar en mi calendario
                 </a>
             </div>
@@ -111,13 +141,13 @@
                 <div class="padres__grupos">
                     <div class="padres__grupo reveal">
                         <h3>Padres del novio</h3>
-                        <p>José Luis Suárez Méndez <span class="padres__cruz">†</span></p>
-                        <p>Blanca Luisa Menacho Stades</p>
+                        <p>Tonny Etter</p>
+                        <p>Giovanna Mendoza Leigue</p>
                     </div>
                     <div class="padres__grupo reveal">
                         <h3>Padres de la novia</h3>
                         <p>Oscar Maldonado Candia</p>
-                        <p>María Lorena Cespedes Guitierrez</p>
+                        <p>Lorena Cespedes Gutierrez</p>
                     </div>
                 </div>
             </div>
@@ -141,36 +171,91 @@
         <section class="seccion seccion--blush cronograma">
             <div class="contenedor">
                 <h2 class="titulo reveal">Cronograma</h2>
-                <ol class="cronograma__lista">
-                    <li class="cronograma__item reveal">
-                        <span class="cronograma__hora">19:15</span>
-                        <span class="cronograma__punto" aria-hidden="true"></span>
-                        <span class="cronograma__evento">Recepción de invitados</span>
+                <ol class="crono">
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 11a5.5 3 0 0 0 11 0"/>
+                                <line x1="14.5" y1="12" x2="14.5" y2="23"/>
+                                <line x1="11" y1="23" x2="18" y2="23"/>
+                                <path d="M28 11a5.5 3 0 0 0 11 0"/>
+                                <line x1="33.5" y1="12" x2="33.5" y2="23"/>
+                                <line x1="30" y1="23" x2="37" y2="23"/>
+                                <circle cx="14.5" cy="7" r="0.8"/>
+                                <circle cx="33.5" cy="7" r="0.8"/>
+                                <circle cx="24" cy="9" r="0.8"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">19:15</span>
+                        <span class="crono__evento">Recepción de invitados</span>
                     </li>
-                    <li class="cronograma__item reveal">
-                        <span class="cronograma__hora">19:30</span>
-                        <span class="cronograma__punto" aria-hidden="true"></span>
-                        <span class="cronograma__evento">Ingreso de los novios</span>
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M24 41C11 32 6 24.5 6 17.5 6 11.5 10.3 8 15 8c3.4 0 6.5 2 9 5.6C26.5 10 29.6 8 33 8c4.7 0 9 3.5 9 9.5 0 7-5 14.5-18 23.5z"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">19:30</span>
+                        <span class="crono__evento">Ingreso de los novios</span>
                     </li>
-                    <li class="cronograma__item reveal">
-                        <span class="cronograma__hora">20:00</span>
-                        <span class="cronograma__punto" aria-hidden="true"></span>
-                        <span class="cronograma__evento">Comienza la música</span>
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="15" cy="34" r="3.5"/>
+                                <circle cx="31" cy="31" r="3.5"/>
+                                <line x1="18.5" y1="34" x2="18.5" y2="13"/>
+                                <line x1="34.5" y1="31" x2="34.5" y2="11"/>
+                                <path d="M18.5 13L34.5 11"/>
+                                <path d="M18.5 17.5L34.5 15.5"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">20:00</span>
+                        <span class="crono__evento">Comienzo de música</span>
                     </li>
-                    <li class="cronograma__item reveal">
-                        <span class="cronograma__hora">21:00</span>
-                        <span class="cronograma__punto" aria-hidden="true"></span>
-                        <span class="cronograma__evento">Cena</span>
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="24" cy="26" r="9.5"/>
+                                <circle cx="24" cy="26" r="6"/>
+                                <line x1="7" y1="9" x2="7" y2="15"/>
+                                <line x1="10" y1="9" x2="10" y2="15"/>
+                                <line x1="13" y1="9" x2="13" y2="15"/>
+                                <path d="M7 15h6"/>
+                                <line x1="10" y1="15" x2="10" y2="39"/>
+                                <path d="M41 9v30"/>
+                                <path d="M41 9c-4 1-5 6-5 10h5"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">21:00</span>
+                        <span class="crono__evento">Cena</span>
                     </li>
-                    <li class="cronograma__item reveal">
-                        <span class="cronograma__hora">22:00</span>
-                        <span class="cronograma__punto" aria-hidden="true"></span>
-                        <span class="cronograma__evento">Torta</span>
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 42V28h20v14"/>
+                                <path d="M18 28v-6h12v6"/>
+                                <path d="M14 34h20"/>
+                                <path d="M24 19l-.9-1c-1.3-1.4-3.1-.4-3.1 1.1 0 1.6 1.9 2.9 4 4.4 2.1-1.5 4-2.8 4-4.4 0-1.5-1.8-2.5-3.1-1.1z"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">22:00</span>
+                        <span class="crono__evento">Torta</span>
                     </li>
-                    <li class="cronograma__item reveal">
-                        <span class="cronograma__hora">00:00</span>
-                        <span class="cronograma__punto" aria-hidden="true"></span>
-                        <span class="cronograma__evento">Hora loca</span>
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 42l13-4-9-9z"/>
+                                <path d="M11 30l2.5-2.5M13 35l3.5-1.5"/>
+                                <line x1="19" y1="26" x2="24" y2="16"/>
+                                <line x1="23" y1="30" x2="33" y2="27"/>
+                                <circle cx="28" cy="14" r="1.2"/>
+                                <circle cx="37" cy="20" r="1.2"/>
+                                <circle cx="34" cy="31" r="1.2"/>
+                                <path d="M40 11l1.5 1.5M41 26l2 .5M31 8l.8 1.6"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">00:00</span>
+                        <span class="crono__evento">Hora loca</span>
                     </li>
                 </ol>
             </div>
@@ -211,14 +296,27 @@
                     Si deseas acompañarnos con un detalle, será recibido con mucho cariño.
                 </p>
                 <div class="regalos__opciones">
-                    <div class="regalos__tarjeta">
-                        <h3>Efectivo en sobres</h3>
-                        <p>Habrá un buzón en la recepción</p>
+                    <div class="regalos__tarjeta regalos__tarjeta--qr">
+                        <p class="regalos__label">Transferencia</p>
+                        <div class="qr">
+                            <span class="qr__c qr__c--tl" aria-hidden="true"></span>
+                            <span class="qr__c qr__c--tr" aria-hidden="true"></span>
+                            <span class="qr__c qr__c--bl" aria-hidden="true"></span>
+                            <span class="qr__c qr__c--br" aria-hidden="true"></span>
+                            <img src="images/qr-deposito.png" width="210" height="210"
+                                 alt="Código QR para el depósito del regalo">
+                        </div>
+                        <p class="regalos__nota">Escanea el código para enviar tu regalo</p>
                     </div>
-                    <div class="regalos__tarjeta">
-                        <h3>Banco Ganadero</h3>
-                        <p class="regalos__cuenta" id="numeroCuenta">1051423542</p>
-                        <button class="btn btn--mini" id="copiarCuenta">Copiar número de cuenta</button>
+                    <div class="regalos__tarjeta regalos__tarjeta--sobre">
+                        <span class="regalos__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="7" y="12" width="34" height="24" rx="2.5"/>
+                                <path d="M8 14l16 12 16-12"/>
+                            </svg>
+                        </span>
+                        <h3>Efectivo en sobres</h3>
+                        <p class="regalos__nota">Habrá un buzón disponible en la recepción</p>
                     </div>
                 </div>
             </div>

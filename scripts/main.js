@@ -132,21 +132,6 @@ const nombreParaMensaje = invitado || '';
 const mensaje = `¡Hola! Soy ${nombreParaMensaje || '________'} y confirmo mi asistencia a la boda de Julio y Tamara el sábado 29 de agosto de 2026. 🤍`;
 btnWhatsApp.href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
-// ─────────── Copiar cuenta bancaria ───────────
-const btnCopiar = document.getElementById('copiarCuenta');
-btnCopiar.addEventListener('click', async () => {
-    const cuenta = document.getElementById('numeroCuenta').textContent.trim();
-    try {
-        await navigator.clipboard.writeText(cuenta);
-        btnCopiar.textContent = '¡Copiado! ✓';
-    } catch {
-        btnCopiar.textContent = cuenta;
-    }
-    setTimeout(() => {
-        btnCopiar.textContent = 'Copiar número de cuenta';
-    }, 2500);
-});
-
 // ─────────── Lightbox de la galería ───────────
 const lightbox = document.getElementById('lightbox');
 const lbImagen = document.getElementById('lbImagen');
