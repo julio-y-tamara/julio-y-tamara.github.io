@@ -1,0 +1,863 @@
+/* ══════════════════════════════════════════════
+   Invitación de boda — Julio & Tamara
+   Mobile first · Paleta pastel
+   ══════════════════════════════════════════════ */
+
+:root {
+    --crema:        #FDF9F4;
+    --blush:        #F9EDEA;
+    --rosa:         #E8C4BE;
+    --rosa-oscuro:  #C98E86;
+    --sage:         #EEF2EA;
+    --sage-oscuro:  #93A48A;
+    --dorado:       #C9A97D;
+    --dorado-claro: #E5D3B5;
+    --tinta:        #5C4F4A;
+    --tinta-suave:  #8A7B74;
+
+    --fuente-script: 'Great Vibes', cursive;
+    --fuente-serif:  'Cormorant Garamond', serif;
+    --fuente-sans:   'Jost', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--fuente-sans);
+    font-weight: 300;
+    color: var(--tinta);
+    background: var(--crema);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ─────────── Utilidades ─────────── */
+
+.contenedor {
+    width: min(100% - 3rem, 62rem);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.seccion { padding: 4.5rem 0; }
+.seccion--crema { background: var(--crema); }
+.seccion--blush { background: var(--blush); }
+.seccion--sage  { background: var(--sage); }
+
+.titulo {
+    font-family: var(--fuente-script);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    color: var(--rosa-oscuro);
+    margin-bottom: 1.5rem;
+}
+
+.ornamento {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--dorado);
+    margin-bottom: 1.2rem;
+}
+
+.btn {
+    display: inline-block;
+    font-family: var(--fuente-sans);
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 999px;
+    padding: 0.9rem 2.2rem;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn--dorado {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(201, 169, 125, 0.45);
+}
+
+.btn--contorno {
+    background: transparent;
+    color: var(--rosa-oscuro);
+    border: 1px solid var(--rosa);
+    margin-top: 2rem;
+}
+
+.btn--contorno:hover { background: var(--rosa); color: #fff; }
+
+.btn--mini {
+    font-size: 0.75rem;
+    padding: 0.55rem 1.3rem;
+    background: var(--sage-oscuro);
+    color: #fff;
+    margin-top: 0.8rem;
+}
+
+/* ─────────── Animación reveal ─────────── */
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero__petalos { display: none; }
+}
+
+/* ─────────── Sobre de bienvenida ─────────── */
+
+.sobre {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(232, 196, 190, 0.35), transparent 55%),
+        radial-gradient(circle at 75% 80%, rgba(147, 164, 138, 0.25), transparent 55%),
+        var(--crema);
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.sobre.cerrado {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sobre__contenido { text-align: center; padding: 2rem; }
+
+.sobre__monograma {
+    font-family: var(--fuente-serif);
+    font-size: clamp(3.5rem, 15vw, 5.5rem);
+    letter-spacing: 0.1em;
+    color: var(--tinta);
+    border: 1px solid var(--dorado-claro);
+    border-radius: 50%;
+    width: clamp(10rem, 42vw, 14rem);
+    height: clamp(10rem, 42vw, 14rem);
+    display: grid;
+    place-items: center;
+    margin: 0 auto 1.8rem;
+    line-height: 1;
+}
+
+.sobre__monograma span {
+    font-family: var(--fuente-script);
+    color: var(--dorado);
+    font-size: 0.55em;
+}
+
+.sobre__texto {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--tinta-suave);
+    margin-bottom: 2rem;
+}
+
+.sobre__nota {
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dorado);
+}
+
+/* ─────────── Botón de música ─────────── */
+
+.musica-toggle {
+    position: fixed;
+    bottom: 1.1rem;
+    right: 1.1rem;
+    z-index: 90;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    box-shadow: 0 6px 18px rgba(201, 169, 125, 0.5);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.6);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+}
+
+.musica-toggle.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.musica-toggle:hover { transform: scale(1.08); }
+
+.musica-toggle__icono--on {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    height: 1.1rem;
+}
+
+.musica-toggle__icono--on span {
+    width: 3px;
+    background: #fff;
+    border-radius: 2px;
+    animation: barras 1s ease-in-out infinite;
+}
+
+.musica-toggle__icono--on span:nth-child(1) { height: 40%; animation-delay: 0s; }
+.musica-toggle__icono--on span:nth-child(2) { height: 90%; animation-delay: 0.2s; }
+.musica-toggle__icono--on span:nth-child(3) { height: 60%; animation-delay: 0.4s; }
+.musica-toggle__icono--on span:nth-child(4) { height: 80%; animation-delay: 0.15s; }
+
+@keyframes barras {
+    0%, 100% { transform: scaleY(0.5); }
+    50%      { transform: scaleY(1); }
+}
+
+.musica-toggle__icono--off {
+    display: none;
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+/* Estado pausado: oculta barras, muestra la nota, detiene animación */
+.musica-toggle.pausado .musica-toggle__icono--on { display: none; }
+.musica-toggle.pausado .musica-toggle__icono--off { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+    .musica-toggle__icono--on span { animation: none; }
+}
+
+/* ─────────── Hero ─────────── */
+
+.hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.hero__imagen {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 25%;
+    z-index: -2;
+    animation: heroZoom 18s ease-out forwards;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1.12); }
+    to   { transform: scale(1); }
+}
+
+.hero__velo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        180deg,
+        rgba(92, 79, 74, 0.25) 0%,
+        rgba(92, 79, 74, 0.05) 40%,
+        rgba(92, 79, 74, 0.55) 100%
+    );
+}
+
+.hero__contenido {
+    padding: 2rem 1.5rem;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    margin-top: 30svh;
+}
+
+.hero__anuncio {
+    font-family: var(--fuente-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+}
+
+.hero__nombres {
+    font-family: var(--fuente-script);
+    font-weight: 400;
+    font-size: clamp(3.2rem, 13vw, 6.5rem);
+    line-height: 1.1;
+}
+
+.hero__amp {
+    color: var(--dorado-claro);
+    font-size: 0.7em;
+}
+
+.hero__fecha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-family: var(--fuente-serif);
+    font-size: 1.3rem;
+    letter-spacing: 0.25em;
+}
+
+.hero__linea {
+    width: 3rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.hero__flecha {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.85);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+    transform: rotate(45deg);
+    margin: 0 auto;
+    animation: rebote 2s infinite;
+}
+
+@keyframes rebote {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); }
+    50%      { transform: rotate(45deg) translate(6px, 6px); }
+}
+
+/* Pétalos flotantes */
+
+.hero__petalos { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+
+.petalo {
+    position: absolute;
+    top: -5%;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%, #fdeef0, var(--rosa));
+    border-radius: 60% 40% 60% 40%;
+    opacity: 0.8;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    0%   { transform: translateY(-5vh) rotate(0deg)   translateX(0); }
+    50%  { transform: translateY(55vh) rotate(200deg) translateX(4vw); }
+    100% { transform: translateY(110vh) rotate(420deg) translateX(-3vw); }
+}
+
+/* ─────────── Versículo ─────────── */
+
+.versiculo__cita {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: clamp(1.25rem, 4.5vw, 1.7rem);
+    max-width: 34ch;
+    margin: 0 auto 1rem;
+    color: var(--tinta);
+}
+
+.versiculo__ref {
+    font-family: var(--fuente-sans);
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.8rem;
+    color: var(--dorado);
+}
+
+/* ─────────── Fecha y contador ─────────── */
+
+.fecha__bloque {
+    font-family: var(--fuente-serif);
+    margin-bottom: 2.5rem;
+}
+
+.fecha__dia-semana {
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 1rem;
+    color: var(--tinta-suave);
+}
+
+.fecha__numero {
+    font-size: clamp(4.5rem, 18vw, 7rem);
+    line-height: 1;
+    color: var(--rosa-oscuro);
+}
+
+.fecha__mes {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 1.05rem;
+}
+
+.fecha__hora {
+    margin-top: 0.4rem;
+    font-family: var(--fuente-sans);
+    color: var(--tinta-suave);
+}
+
+.contador {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.contador__item {
+    background: #fff;
+    border: 1px solid var(--rosa);
+    border-radius: 1rem;
+    min-width: 4.6rem;
+    padding: 0.9rem 0.5rem 0.7rem;
+    box-shadow: 0 8px 20px rgba(201, 142, 134, 0.15);
+}
+
+.contador__item span {
+    display: block;
+    font-family: var(--fuente-serif);
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: var(--rosa-oscuro);
+    line-height: 1;
+}
+
+.contador__item small {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.65rem;
+    color: var(--tinta-suave);
+}
+
+/* ─────────── Pase personalizado ─────────── */
+
+.pase__tarjeta {
+    background: #fff;
+    border: 1px solid var(--dorado-claro);
+    border-radius: 1.4rem;
+    padding: 3rem 2rem;
+    max-width: 26rem;
+    margin: 0 auto;
+    box-shadow: 0 15px 40px rgba(92, 79, 74, 0.08);
+    position: relative;
+}
+
+.pase__tarjeta::before {
+    content: '';
+    position: absolute;
+    inset: 0.55rem;
+    border: 1px dashed var(--dorado-claro);
+    border-radius: 1rem;
+    pointer-events: none;
+}
+
+.pase__saludo {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    color: var(--tinta-suave);
+}
+
+.pase__nombre {
+    font-family: var(--fuente-script);
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    color: var(--rosa-oscuro);
+    margin: 0.4rem 0 1rem;
+    line-height: 1.2;
+}
+
+.pase__detalle {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.75rem;
+    color: var(--tinta-suave);
+}
+
+.pase__numero {
+    font-family: var(--fuente-serif);
+    font-size: 1.8rem;
+    color: var(--dorado);
+    margin: 0.3rem 0;
+}
+
+/* ─────────── Padres ─────────── */
+
+.padres__grupos {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.padres__grupo h3 {
+    font-family: var(--fuente-sans);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    color: var(--sage-oscuro);
+    margin-bottom: 0.8rem;
+}
+
+.padres__grupo p {
+    font-family: var(--fuente-serif);
+    font-size: 1.25rem;
+}
+
+.padres__cruz { color: var(--tinta-suave); font-size: 0.85em; }
+
+/* ─────────── Recepción ─────────── */
+
+.lugar__nombre {
+    font-family: var(--fuente-serif);
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+}
+
+.lugar__hora {
+    font-family: var(--fuente-sans);
+    letter-spacing: 0.2em;
+    color: var(--tinta-suave);
+    margin-top: 0.3rem;
+}
+
+/* ─────────── Cronograma ─────────── */
+
+.cronograma__lista {
+    list-style: none;
+    max-width: 24rem;
+    margin: 0 auto;
+    position: relative;
+    text-align: left;
+}
+
+.cronograma__lista::before {
+    content: '';
+    position: absolute;
+    left: 5.2rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--rosa);
+}
+
+.cronograma__item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.85rem 0;
+}
+
+.cronograma__hora {
+    font-family: var(--fuente-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--rosa-oscuro);
+    width: 4rem;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.cronograma__punto {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--dorado);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--dorado-claro);
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.cronograma__evento { font-size: 1.05rem; }
+
+/* ─────────── Galería ─────────── */
+
+.nosotros__intro {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    color: var(--tinta-suave);
+    margin-bottom: 2rem;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+}
+
+.galeria__item {
+    overflow: hidden;
+    border-radius: 0.9rem;
+    aspect-ratio: 3 / 4;
+    cursor: pointer;
+}
+
+.galeria__item--ancho {
+    grid-column: span 2;
+    aspect-ratio: 16 / 10;
+}
+
+.galeria__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.galeria__item:hover img { transform: scale(1.06); }
+
+/* ─────────── Regalos ─────────── */
+
+.regalos__texto {
+    max-width: 34ch;
+    margin: 0 auto 2rem;
+    font-family: var(--fuente-serif);
+    font-size: 1.15rem;
+}
+
+.regalos__opciones {
+    display: grid;
+    gap: 1.2rem;
+    max-width: 26rem;
+    margin: 0 auto;
+}
+
+.regalos__tarjeta {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 1.8rem 1.5rem;
+    box-shadow: 0 10px 25px rgba(92, 79, 74, 0.07);
+}
+
+.regalos__tarjeta h3 {
+    font-family: var(--fuente-serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.regalos__cuenta {
+    font-family: var(--fuente-serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    color: var(--sage-oscuro);
+}
+
+/* ─────────── Vestimenta ─────────── */
+
+.vestimenta__tipo {
+    font-family: var(--fuente-serif);
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    letter-spacing: 0.05em;
+}
+
+.vestimenta__nota {
+    max-width: 32ch;
+    margin: 1rem auto 1.8rem;
+    color: var(--tinta-suave);
+}
+
+.vestimenta__colores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.vestimenta__colores small {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.65rem;
+    color: var(--tinta-suave);
+}
+
+.vestimenta__color {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.vestimenta__color::after {
+    content: '';
+    position: absolute;
+    inset: 45%;
+    left: -10%;
+    right: -10%;
+    height: 1.5px;
+    background: var(--rosa-oscuro);
+    transform: rotate(-45deg);
+}
+
+.vestimenta__color--blanco { background: #fff; border: 1px solid #ddd; }
+.vestimenta__color--marino { background: #1f2d4d; }
+
+/* ─────────── RSVP ─────────── */
+
+.rsvp__texto {
+    max-width: 36ch;
+    margin: 0 auto 2rem;
+    font-family: var(--fuente-serif);
+    font-size: 1.2rem;
+}
+
+/* ─────────── Despedida ─────────── */
+
+.despedida {
+    position: relative;
+    min-height: 85svh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    isolation: isolate;
+}
+
+.despedida__imagen {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.despedida__velo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(40, 30, 25, 0.25);
+}
+
+.despedida__contenido {
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    padding: 2rem;
+}
+
+.despedida__mensaje {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    letter-spacing: 0.1em;
+}
+
+.despedida__nombres {
+    font-family: var(--fuente-script);
+    font-size: clamp(3rem, 12vw, 5.5rem);
+    line-height: 1.2;
+}
+
+.despedida__nombres span { color: var(--dorado-claro); font-size: 0.7em; }
+
+.despedida__fecha {
+    font-family: var(--fuente-serif);
+    letter-spacing: 0.3em;
+    margin-top: 0.5rem;
+}
+
+/* ─────────── Pie ─────────── */
+
+.pie {
+    background: var(--tinta);
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+}
+
+.pie span { color: var(--rosa); }
+
+/* ─────────── Lightbox ─────────── */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(30, 22, 20, 0.93);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.abierto { opacity: 1; visibility: visible; }
+
+.lightbox__imagen {
+    max-width: 92vw;
+    max-height: 84svh;
+    border-radius: 0.6rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox__cerrar,
+.lightbox__nav {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.25s ease;
+}
+
+.lightbox__cerrar:hover,
+.lightbox__nav:hover { background: rgba(255, 255, 255, 0.28); }
+
+.lightbox__cerrar { top: 1rem; right: 1rem; }
+.lightbox__nav--prev { left: 0.8rem; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: 0.8rem; top: 50%; transform: translateY(-50%); }
+
+/* ══════════ Tablet / Escritorio ══════════ */
+
+@media (min-width: 640px) {
+    .galeria { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+    .galeria__item--ancho { aspect-ratio: 16 / 9; }
+    .padres__grupos { grid-template-columns: 1fr 1fr; }
+    .regalos__opciones { max-width: 34rem; grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 960px) {
+    .seccion { padding: 6.5rem 0; }
+    .galeria { grid-template-columns: repeat(4, 1fr); }
+    .contador { gap: 1.2rem; }
+    .contador__item { min-width: 5.6rem; }
+}
