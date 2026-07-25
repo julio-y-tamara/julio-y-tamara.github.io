@@ -80,6 +80,12 @@ function marcarConfirmado() {
     btnConfirmar.disabled = true;
 }
 
+function desmarcarConfirmado() {
+    btnConfirmar.textContent = 'Confirmar asistencia';
+    btnConfirmar.classList.remove('btn--confirmado');
+    btnConfirmar.disabled = false;
+}
+
 function mostrarInvitacionInvalida() {
     sobreInvalido.classList.add('visible');
     sobreInvalido.setAttribute('aria-hidden', 'false');
@@ -94,6 +100,8 @@ if (!idInvitado) {
         marcarConfirmado();
     }
 
+    // El servidor siempre manda la verdad; la caché de arriba solo evita el parpadeo
+    // mientras llega la respuesta.
     fetch(`${RSVP_ENDPOINT}?id=${encodeURIComponent(idInvitado)}`)
         .then((r) => r.json())
         .then((datos) => {
@@ -107,6 +115,9 @@ if (!idInvitado) {
             if (datos.confirmado) {
                 localStorage.setItem('rsvp:' + idInvitado, 'confirmado');
                 marcarConfirmado();
+            } else {
+                localStorage.removeItem('rsvp:' + idInvitado);
+                desmarcarConfirmado();
             }
         })
         .catch(() => {});
