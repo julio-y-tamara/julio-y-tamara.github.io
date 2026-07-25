@@ -4,8 +4,6 @@
 
 // ─────────── Configuración ───────────
 const FECHA_EVENTO = new Date('2026-08-29T17:30:00-04:00');
-// Reemplazar por el número real de WhatsApp (código país + número, sin espacios ni "+")
-const NUMERO_WHATSAPP = '59170000000';
 
 // ─────────── Sobre de bienvenida ───────────
 const sobre = document.getElementById('sobre');
@@ -49,11 +47,20 @@ musicaToggle.addEventListener('click', () => {
     }
 });
 
+const reducirMovimientoSobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 btnAbrir.addEventListener('click', () => {
-    sobre.classList.add('cerrado');
-    document.body.style.overflow = '';
+    if (sobre.classList.contains('abriendo')) return;
+
+    sobre.classList.add('abriendo');
     musicaToggle.classList.add('visible');
     reproducirMusica();
+
+    const espera = reducirMovimientoSobre ? 0 : 600;
+    setTimeout(() => {
+        sobre.classList.add('cerrado');
+        document.body.style.overflow = '';
+    }, espera);
 });
 
 // ─────────── Personalización por URL ───────────
@@ -131,11 +138,25 @@ if (contenedorPetalos && !reducirMovimiento) {
     }
 }
 
-// ─────────── RSVP por WhatsApp ───────────
-const btnWhatsApp = document.getElementById('btnWhatsApp');
-const pasesTexto = pases ? ` (${pases} pase${pases === '1' ? '' : 's'})` : '';
-const mensaje = `¡Hola! Soy ${nombreCompleto || '________'}${pasesTexto} y confirmo mi asistencia a la boda de Julio y Tamara el sábado 29 de agosto de 2026. 🤍`;
-btnWhatsApp.href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+// ─────────── Popup de confirmación de asistencia ───────────
+const btnConfirmar = document.getElementById('btnConfirmar');
+const rsvpPopup = document.getElementById('rsvpPopup');
+const rsvpPopupCerrar = document.getElementById('rsvpPopupCerrar');
+
+function cerrarRsvpPopup() {
+    rsvpPopup.classList.remove('abierto');
+    rsvpPopup.setAttribute('aria-hidden', 'true');
+}
+
+btnConfirmar.addEventListener('click', () => {
+    rsvpPopup.classList.add('abierto');
+    rsvpPopup.setAttribute('aria-hidden', 'false');
+});
+
+rsvpPopupCerrar.addEventListener('click', cerrarRsvpPopup);
+rsvpPopup.addEventListener('click', (e) => {
+    if (e.target === rsvpPopup) cerrarRsvpPopup();
+});
 
 // ─────────── Lightbox de la galería ───────────
 const lightbox = document.getElementById('lightbox');

@@ -27,15 +27,18 @@
 
     <!-- ══════════ SOBRE DE BIENVENIDA ══════════ -->
     <div class="sobre" id="sobre">
-        <div class="sobre__contenido">
-            <div class="sobre__monograma">
-                <span class="sobre__nombre">Julio</span>
-                <span class="sobre__amp">&amp;</span>
-                <span class="sobre__nombre">Tamara</span>
-            </div>
-            <p class="sobre__texto">Tenemos algo especial que contarte…</p>
-            <button class="btn btn--dorado" id="abrirInvitacion">Abrir invitación</button>
-            <p class="sobre__nota">Con música · sube el volumen 🎵</p>
+        <div class="sobre__carta">
+            <span class="sobre__pliegue sobre__pliegue--derecha" aria-hidden="true"></span>
+            <span class="sobre__pliegue sobre__pliegue--abajo" aria-hidden="true"></span>
+            <span class="sobre__pliegue sobre__pliegue--izquierda" aria-hidden="true"></span>
+            <span class="sobre__solapa" aria-hidden="true"></span>
+
+            <button class="sobre__sello" id="abrirInvitacion" aria-label="Toca el sello para abrir la invitación">
+                <img class="sobre__sello-img" src="images/sello.png" alt="" aria-hidden="true">
+                <span class="sobre__toca">¡Toca aquí!</span>
+            </button>
+
+            <p class="sobre__nota-musica">🎵 Con música, sube el volumen</p>
         </div>
     </div>
 
@@ -74,38 +77,9 @@
         <!-- ══════════ FECHA Y CUENTA REGRESIVA ══════════ -->
         <section class="seccion seccion--blush fecha">
             <div class="contenedor">
-                <h2 class="titulo reveal">La gran fecha</h2>
+                <h2 class="titulo titulo--largo reveal">Acompañanos en el día más especial de nuestras vidas</h2>
                 <div class="fecha__bloque reveal">
-                    <p class="fecha__dia-semana">Sábado</p>
-                    <p class="fecha__numero">29</p>
-                    <p class="fecha__mes">Agosto 2026</p>
-                </div>
-                <div class="ceremonias reveal">
-                    <div class="ceremonias__item">
-                        <span class="ceremonias__icono" aria-hidden="true">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="19" cy="28" r="9"/>
-                                <circle cx="30" cy="22" r="9"/>
-                                <path d="M30 5l2.4 3-2.4 3-2.4-3z"/>
-                            </svg>
-                        </span>
-                        <p class="ceremonias__tipo">Civil</p>
-                        <p class="ceremonias__hora">17:00</p>
-                    </div>
-                    <div class="ceremonias__item">
-                        <span class="ceremonias__icono" aria-hidden="true">
-                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="24" y1="4" x2="24" y2="10"/>
-                                <line x1="21" y1="6.5" x2="27" y2="6.5"/>
-                                <polyline points="16 19 24 11 32 19"/>
-                                <path d="M16 19V43H32V19"/>
-                                <path d="M20 43v-7a4 4 0 0 1 8 0v7"/>
-                                <circle cx="24" cy="25" r="1.6"/>
-                            </svg>
-                        </span>
-                        <p class="ceremonias__tipo">Bendición</p>
-                        <p class="ceremonias__hora">18:00</p>
-                    </div>
+                    <p class="fecha__linea">Sábado 29 de Agosto 2026</p>
                 </div>
                 <div class="contador reveal" id="contador" aria-live="polite">
                     <div class="contador__item"><span id="cd-dias">--</span><small>días</small></div>
@@ -141,8 +115,8 @@
                 <div class="padres__grupos">
                     <div class="padres__grupo reveal">
                         <h3>Padres del novio</h3>
-                        <p>Tonny Etter</p>
-                        <p>Giovanna Mendoza Leigue</p>
+                        <p>Toni Etter Lysser</p>
+                        <p>Rosa Giovanna Mendoza Leigue</p>
                     </div>
                     <div class="padres__grupo reveal">
                         <h3>Padres de la novia</h3>
@@ -172,6 +146,31 @@
             <div class="contenedor">
                 <h2 class="titulo reveal">Cronograma</h2>
                 <ol class="crono">
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="19" cy="28" r="9"/>
+                                <circle cx="30" cy="22" r="9"/>
+                                <path d="M30 5l2.4 3-2.4 3-2.4-3z"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">17:00</span>
+                        <span class="crono__evento">Civil</span>
+                    </li>
+                    <li class="crono__item reveal">
+                        <span class="crono__icono" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="24" y1="4" x2="24" y2="10"/>
+                                <line x1="21" y1="6.5" x2="27" y2="6.5"/>
+                                <polyline points="16 19 24 11 32 19"/>
+                                <path d="M16 19V43H32V19"/>
+                                <path d="M20 43v-7a4 4 0 0 1 8 0v7"/>
+                                <circle cx="24" cy="25" r="1.6"/>
+                            </svg>
+                        </span>
+                        <span class="crono__hora">18:00</span>
+                        <span class="crono__evento">Bendición</span>
+                    </li>
                     <li class="crono__item reveal">
                         <span class="crono__icono" aria-hidden="true">
                             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -261,6 +260,22 @@
             </div>
         </section>
 
+        <!-- ══════════ SOLO ADULTOS ══════════ -->
+        <section class="seccion seccion--sage adultos">
+            <div class="contenedor reveal">
+                <div class="adultos__tarjeta">
+                    <span class="adultos__icono" aria-hidden="true">
+                        <img src="images/bebe.png" alt="">
+                    </span>
+                    <h2 class="titulo">Solo Adultos</h2>
+                    <p class="adultos__texto">
+                        Queremos que disfruten y bailen sin parar, es por ello
+                        que el evento es solo para adultos, sin niños.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- ══════════ NOSOTROS / GALERÍA ══════════ -->
         <section class="seccion seccion--crema nosotros" id="nosotros">
             <div class="contenedor">
@@ -272,16 +287,13 @@
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image3.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image4.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item galeria__item--ancho reveal"><img loading="lazy" src="images/image12.jpeg" alt="Julio y Tamara"></figure>
-                    <figure class="galeria__item reveal"><img loading="lazy" src="images/image5.jpeg" alt="Julio y Tamara"></figure>
+                    <figure class="galeria__item reveal"><img loading="lazy" src="images/image14.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image7.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image8.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image9.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item galeria__item--ancho reveal"><img loading="lazy" src="images/image6.jpeg" alt="Julio y Tamara al atardecer"></figure>
-                    <figure class="galeria__item reveal"><img loading="lazy" src="images/image10.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image11.jpeg" alt="Julio y Tamara"></figure>
                     <figure class="galeria__item reveal"><img loading="lazy" src="images/image13.jpeg" alt="Julio y Tamara"></figure>
-                    <figure class="galeria__item reveal"><img loading="lazy" src="images/image14.jpeg" alt="Julio y Tamara"></figure>
-                    <figure class="galeria__item reveal"><img loading="lazy" src="images/image15.jpeg" alt="Julio y Tamara caminando de la mano"></figure>
                 </div>
             </div>
         </section>
@@ -329,11 +341,19 @@
                 <p class="vestimenta__tipo">Formal — Elegante</p>
                 <p class="vestimenta__nota">
                     Para mantener la armonía del evento,
-                    sugerimos evitar los colores blanco y azul marino.
+                    sugerimos evitar los colores blanco y beige.
                 </p>
-                <div class="vestimenta__colores" aria-label="Colores a evitar">
-                    <span class="vestimenta__color vestimenta__color--blanco" title="Blanco"></span>
-                    <span class="vestimenta__color vestimenta__color--marino" title="Azul marino"></span>
+                <div class="vestimenta__colores">
+                    <div class="vestimenta__paleta" aria-label="Gama de colores a evitar: de blanco a beige">
+                        <span class="vestimenta__tono" style="background:#FFFFFF" title="Blanco"></span>
+                        <span class="vestimenta__tono" style="background:#FBF9F5"></span>
+                        <span class="vestimenta__tono" style="background:#F6F3EA"></span>
+                        <span class="vestimenta__tono" style="background:#F2ECE0"></span>
+                        <span class="vestimenta__tono" style="background:#EEE6D5"></span>
+                        <span class="vestimenta__tono" style="background:#E9E0CB"></span>
+                        <span class="vestimenta__tono" style="background:#E5DAC0"></span>
+                        <span class="vestimenta__tono" style="background:#E1D3B6"></span>
+                    </div>
                     <small>colores reservados</small>
                 </div>
             </div>
@@ -347,9 +367,9 @@
                     Será de mucha alegría para nosotros contar
                     con su compañía en este día tan importante.
                 </p>
-                <a class="btn btn--dorado" id="btnWhatsApp" target="_blank" rel="noopener" href="#">
-                    Confirmar por WhatsApp
-                </a>
+                <button class="btn btn--contorno" id="btnConfirmar" type="button">
+                    Confirmar
+                </button>
             </div>
         </section>
 
@@ -375,6 +395,15 @@
         <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Anterior">‹</button>
         <img class="lightbox__imagen" id="lbImagen" src="" alt="Foto de Julio y Tamara">
         <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Siguiente">›</button>
+    </div>
+
+    <!-- ══════════ POPUP DE CONFIRMACIÓN ══════════ -->
+    <div class="rsvp-popup" id="rsvpPopup" aria-hidden="true">
+        <div class="rsvp-popup__tarjeta">
+            <button class="rsvp-popup__cerrar" id="rsvpPopupCerrar" aria-label="Cerrar">×</button>
+            <span class="ornamento" aria-hidden="true">✦</span>
+            <p class="rsvp-popup__mensaje">¡Gracias por confirmar tu asistencia!<br>Nos hace muy felices contar contigo.</p>
+        </div>
     </div>
 
     <script src="scripts/main.js"></script>
