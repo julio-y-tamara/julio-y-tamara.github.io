@@ -105,6 +105,16 @@ img { max-width: 100%; display: block; }
 
 .btn--contorno:hover { background: var(--rosa); color: #fff; }
 
+.btn--confirmado,
+.btn--confirmado:hover {
+    background: var(--crema-clara);
+    color: var(--sage-oscuro);
+    border-color: var(--sage-oscuro);
+    cursor: default;
+    transform: none;
+    opacity: 0.85;
+}
+
 .btn--mini {
     font-size: 0.75rem;
     padding: 0.55rem 1.3rem;
@@ -1081,6 +1091,37 @@ img { max-width: 100%; display: block; }
 .lightbox__cerrar { top: 1rem; right: 1rem; }
 .lightbox__nav--prev { left: 0.8rem; top: 50%; transform: translateY(-50%); }
 .lightbox__nav--next { right: 0.8rem; top: 50%; transform: translateY(-50%); }
+
+/* ─────────── Invitación no válida ─────────── */
+
+.sobre-invalido {
+    position: fixed;
+    inset: 0;
+    z-index: 101;
+    display: none;
+    place-items: center;
+    background: var(--sage);
+    padding: 1.5rem;
+}
+
+.sobre-invalido.visible { display: grid; }
+
+.sobre-invalido__tarjeta {
+    background: var(--crema-clara);
+    border-radius: 1.4rem;
+    padding: 2.8rem 2rem;
+    max-width: 24rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(84, 94, 73, 0.15);
+}
+
+.sobre-invalido__texto {
+    font-family: var(--fuente-serif);
+    font-size: 1.05rem;
+    color: var(--tinta);
+    margin-top: 0.8rem;
+    line-height: 1.6;
+}
 
 /* ─────────── Popup de confirmación ─────────── */
 

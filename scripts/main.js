@@ -63,19 +63,52 @@ btnAbrir.addEventListener('click', () => {
     }, espera);
 });
 
-// ─────────── Personalización por URL ───────────
-// Ejemplo: index.html?nombre=María&apellido=Pérez&pases=4
+// ─────────── Invitación personalizada (?id=CODIGO) ───────────
+const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycby_9TxIDL6ol3sQHLfu5ru6mAkKt11LoafeMQ3CGXKIogEJp40k4PDfuK53X3J8WrSP/exec';
+
 const params = new URLSearchParams(window.location.search);
-const nombre = params.get('nombre');
-const apellido = params.get('apellido');
-const pases = params.get('pases');
+const idInvitado = (params.get('id') || '').trim().toUpperCase();
 
-// Nombre completo a partir de nombre + apellido (soporta también ?invitado=)
-const nombreCompleto = [nombre, apellido].filter(Boolean).join(' ').trim()
-    || (params.get('invitado') || '').trim();
+const elNombreInvitado = document.getElementById('nombreInvitado');
+const elNumeroPases = document.getElementById('numeroPases');
+const sobreInvalido = document.getElementById('sobreInvalido');
+const btnConfirmar = document.getElementById('btnConfirmar');
 
-if (nombreCompleto) document.getElementById('nombreInvitado').textContent = nombreCompleto;
-if (pases) document.getElementById('numeroPases').textContent = pases;
+function marcarConfirmado() {
+    btnConfirmar.textContent = '✓ Ya confirmaste tu asistencia';
+    btnConfirmar.classList.add('btn--confirmado');
+    btnConfirmar.disabled = true;
+}
+
+function mostrarInvitacionInvalida() {
+    sobreInvalido.classList.add('visible');
+    sobreInvalido.setAttribute('aria-hidden', 'false');
+}
+
+// La página siempre carga de inmediato con datos genéricos; el nombre real
+// (y el estado de confirmación) llegan después, en segundo plano.
+if (idInvitado) {
+    if (localStorage.getItem('rsvp:' + idInvitado) === 'confirmado') {
+        marcarConfirmado();
+    }
+
+    fetch(`${RSVP_ENDPOINT}?id=${encodeURIComponent(idInvitado)}`)
+        .then((r) => r.json())
+        .then((datos) => {
+            if (!datos.existe) {
+                mostrarInvitacionInvalida();
+                return;
+            }
+            const nombreInvitado = (datos.nombre || '').trim();
+            if (nombreInvitado) elNombreInvitado.textContent = nombreInvitado;
+            if (datos.pases) elNumeroPases.textContent = datos.pases;
+            if (datos.confirmado) {
+                localStorage.setItem('rsvp:' + idInvitado, 'confirmado');
+                marcarConfirmado();
+            }
+        })
+        .catch(() => {});
+}
 
 // ─────────── Cuenta regresiva ───────────
 const cdDias = document.getElementById('cd-dias');
@@ -139,7 +172,6 @@ if (contenedorPetalos && !reducirMovimiento) {
 }
 
 // ─────────── Popup de confirmación de asistencia ───────────
-const btnConfirmar = document.getElementById('btnConfirmar');
 const rsvpPopup = document.getElementById('rsvpPopup');
 const rsvpPopupCerrar = document.getElementById('rsvpPopupCerrar');
 
@@ -148,9 +180,25 @@ function cerrarRsvpPopup() {
     rsvpPopup.setAttribute('aria-hidden', 'true');
 }
 
-btnConfirmar.addEventListener('click', () => {
+function abrirRsvpPopup() {
     rsvpPopup.classList.add('abierto');
     rsvpPopup.setAttribute('aria-hidden', 'false');
+}
+
+btnConfirmar.addEventListener('click', () => {
+    if (btnConfirmar.disabled) return;
+
+    if (idInvitado) {
+        fetch(RSVP_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: new URLSearchParams({ id: idInvitado }),
+        }).catch(() => {});
+        localStorage.setItem('rsvp:' + idInvitado, 'confirmado');
+        marcarConfirmado();
+    }
+
+    abrirRsvpPopup();
 });
 
 rsvpPopupCerrar.addEventListener('click', cerrarRsvpPopup);
