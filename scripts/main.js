@@ -87,7 +87,9 @@ function mostrarInvitacionInvalida() {
 
 // La página siempre carga de inmediato con datos genéricos; el nombre real
 // (y el estado de confirmación) llegan después, en segundo plano.
-if (idInvitado) {
+if (!idInvitado) {
+    mostrarInvitacionInvalida();
+} else {
     if (localStorage.getItem('rsvp:' + idInvitado) === 'confirmado') {
         marcarConfirmado();
     }
