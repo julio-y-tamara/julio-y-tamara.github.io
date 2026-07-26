@@ -55,6 +55,7 @@ btnAbrir.addEventListener('click', () => {
     sobre.classList.add('abriendo');
     musicaToggle.classList.add('visible');
     reproducirMusica();
+    marcarVisto();
 
     const espera = reducirMovimientoSobre ? 0 : 600;
     setTimeout(() => {
@@ -89,6 +90,13 @@ function desmarcarConfirmado() {
 function mostrarInvitacionInvalida() {
     sobreInvalido.classList.add('visible');
     sobreInvalido.setAttribute('aria-hidden', 'false');
+}
+
+// Se llama solo cuando la persona hace clic para abrir el sobre (interacción real),
+// nunca en la sola carga de la página, para no contar bots/vistas previas como "visto".
+function marcarVisto() {
+    if (!idInvitado) return;
+    fetch(`${RSVP_ENDPOINT}?id=${encodeURIComponent(idInvitado)}&visto=1`).catch(() => {});
 }
 
 // La página siempre carga de inmediato con datos genéricos; el nombre real
